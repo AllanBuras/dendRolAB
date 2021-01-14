@@ -1,0 +1,11 @@
+Package: dendRolAB
+Type: Package
+Title: Analytical tools for tree-ring data
+Version: 0.2
+Date: 2021-01-13
+Author: Allan Buras
+Maintainer: Allan Buras <allan@buras.eu>
+Description: A compilation of recently developed evaluational and statistical tools for dendrochronologists.
+License: GPL-3
+Depends: dplR
+RoxygenNote: 7.1.1
