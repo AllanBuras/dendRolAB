@@ -1,6 +1,4 @@
 exportPattern("^[[:alpha:]]+")
-S3method(plot,PCGA)
-S3method(plot,BTFS)
 import(dplR)
 importFrom("grDevices", "hsv")
 importFrom("graphics", "arrows", "plot","locator","text","points","par","boxplot")
