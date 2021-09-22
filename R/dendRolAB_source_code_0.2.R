@@ -50,7 +50,7 @@ pcga<-function(rwl,plot.CI=T)
 plot_pcga<-function(x,col.vec=NULL,...)
 	{
 	plot(0,0,type="n",xlim=range(-c(x$pca$rot[,1],x$pca$rot[,2]),c(x$pca$rot[,1],x$pca$rot[,2])),
-	ylim=range(-c(x$pca$rot[,1],x$pca$rot[,2]),c(x$pca$rot[,1],x$pca$rot[,2])),xlab=paste("PC1 (r.sq):",round(x$imp[2,1],2),sep=" "),ylab=paste("PC2 (r.sq):",round(x$imp[2,2],2),sep=" "),...)
+	ylim=range(-c(x$pca$rot[,1],x$pca$rot[,2]),c(x$pca$rot[,1],x$pca$rot[,2])),xlab=paste("PC1 (rsq):",round(x$imp[2,1],2),sep=" "),ylab=paste("PC2 (rsq):",round(x$imp[2,2],2),sep=" "),...)
 	if(length(col.vec)==0)
 		{
 		for(i in 1:nrow(x$pca$rot))
@@ -70,7 +70,7 @@ plot_pcga<-function(x,col.vec=NULL,...)
 
 identRank<-function(pcga.obj)
 	{
-	plot(pcga.obj)
+	plot_pcga(pcga.obj)
 	print("please select tree by clicking on the head of the loading-arrows")
 	LOC<-locator(1)
 	DIST<-vector(mode="numeric")
@@ -149,7 +149,7 @@ btfs<-function(x,y,boot.n=1000)
 		BOOT_MAT[i,5]<-min(ITER[,5])
 		BOOT_MAT[i,6]<-min(ITER[,6])
 		}
-	colnames(COMP_MAT)<-c("intercept P1","intercept P2","slope P1","slope P2","rÂ² P1","rÂ² P2")
+	colnames(COMP_MAT)<-c("intercept P1","intercept P2","slope P1","slope P2","r² P1","r² P2")
 	MEANS<-apply(BOOT_MAT,2,median)
 	STATS<-length(which(BOOT_MAT[,1]<=0.05))/boot.n
 	ECDF2<-ecdf(BOOT_MAT[,2])
@@ -168,7 +168,7 @@ btfs<-function(x,y,boot.n=1000)
 	MEANS<-round(MEANS,digits=2)
 	STATS<-round(STATS,digits=3)
 	OUT<-rbind(MEANS[2:6],STATS[2:6])
-	colnames(OUT)<-c("intercept-ratio","slope-ratio","rÂ²-ratio","RE","CE")
+	colnames(OUT)<-c("intercept-ratio","slope-ratio","r²-ratio","RE","CE")
 	rownames(OUT)<-c("bootstrapped estimate","p-value")
 	if(MEANS[1]>0.05){print(paste("Warning: period-specific regressions are in ",1-STATS[1],"% of cases insignificant",sep=""))}
 	list(stats=OUT,boot.mat=COMP_MAT)
@@ -180,7 +180,7 @@ plot_btfs<-function(x,...)
 	par(mfrow=c(1,3))
 	for(i in 1:3)
 		{
-		boxplot(x$boot.mat[,(i*2)-(1:0)],main=c("intercept","slope","rÂ²")[i],cex.lab=1.5,cex.axis=1.5,cex.main=2)
+		boxplot(x$boot.mat[,(i*2)-(1:0)],main=c("intercept","slope","r²")[i],cex.lab=1.5,cex.axis=1.5,cex.main=2)
 		VEC<-as.vector(x$boot.mat[,(i*2)-(1:0)])
 		if(x$stats[2,i]>0.05){SIGN<-""}
 		if(x$stats[2,i]<0.05){SIGN<-"*"}
