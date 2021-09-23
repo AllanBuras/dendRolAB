@@ -180,7 +180,7 @@ plot_btfs<-function(x,...)
 	par(mfrow=c(1,3))
 	for(i in 1:3)
 		{
-		boxplot(x$boot.mat[,(i*2)-(1:0)],main=c("intercept","slope","r²")[i],cex.lab=1.5,cex.axis=1.5,cex.main=2)
+		boxplot(x$boot.mat[,(i*2)-(1:0)],main=c("intercept","slope","r.sq")[i],cex.lab=1.5,cex.axis=1.5,cex.main=2)
 		VEC<-as.vector(x$boot.mat[,(i*2)-(1:0)])
 		if(x$stats[2,i]>0.05){SIGN<-""}
 		if(x$stats[2,i]<0.05){SIGN<-"*"}
