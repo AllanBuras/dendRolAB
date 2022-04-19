@@ -392,7 +392,7 @@ bsgc<-function(rwl,p.thresh=0.05,make.plot=T,maxlag=20,rm.succ=FALSE,w1=0.93,w2=
   }
   if(make.plot==T)
   {
-    plot(CHRON~rownames(rwl),type="l",lwd=2,xlab="year",ylab="RWI",...)
+    plot(CHRON~rownames(rwl),type="l",lwd=2,...)
     points(as.numeric(names(NEG)),CHRON[names(NEG)],pch=16,col="red",cex=2)
     points(as.numeric(names(POS)),CHRON[names(POS)],pch=16,col="blue",cex=2)
     for(i in which(LEG.NEG>0))
@@ -406,10 +406,7 @@ bsgc<-function(rwl,p.thresh=0.05,make.plot=T,maxlag=20,rm.succ=FALSE,w1=0.93,w2=
              CHRON[as.character((as.numeric(names(POS)[i])+1):(as.numeric(names(POS)[i])+LEG.POS[i]))],pch=16,col="dodgerblue",cex=2)
     }
   }
-  colnames(PSGC.MAT)<-paste("lag",0:(ncol(PSGC.MAT)-1))
-  colnames(PGSGC.MAT)<-paste("lag",0:(ncol(PSGC.MAT)-1))
-  colnames(COMB.P)<-paste("lag",0:(ncol(PSGC.MAT)-1))
-  list(neg=NEG,pos=POS,pvals.sgc=PSGC.MAT,pvals.gsgc=PGSGC.MAT,pvals.conf=COMB.P,rel.neg=LEG.NEG,rel.pos=LEG.POS)
+  list(neg=NEG,pos=POS,pvals.sgc=PSGC.MAT,pvals.gsgc=PGSGC.MAT,pvals.conf=COMB.P,def.neg=LEG.NEG,def.pos=LEG.POS)
 }
 
 

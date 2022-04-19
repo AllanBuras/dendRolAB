@@ -44,8 +44,8 @@ P.thresh must not be increased in order to conform with statistical rules and ke
 \item{pvals.sgc}{A matrix containing the p-values related to SGC. Rows refer to years, columns to lag-time in years.}
 \item{pvals.gsgc}{A matrix containing the p-values related to GSGC. Rows refer to years, columns to lag-time in years.}
 \item{pvals.conf}{A matrix containing conflated p-values combining pvals.sgc and pvals.gsgc which is used to identify pointer years and relaxation periods. Rows refer to years, columns to lag-time in years.}
-\item{rel.neg}{A vector containing the duration of relaxation periods for all identified negative pointer years. The vector names refer to corresponding years.}
-\item{rel.pos}{A vector containing the duration of relaxation periods for all identified positive pointer years. The vector names refer to corresponding years.}
+\item{def.neg}{A vector containing the duration of deflection periods for all identified negative pointer years. The vector names refer to corresponding years.}
+\item{def.pos}{A vector containing the duration of deflection periods for all identified positive pointer years. The vector names refer to corresponding years.}
 }
 \references{
 Buras, Rammig, and Zang (2020): A novel approach for the detection of pointer years. Dendrochronologia 63, 125746. https://doi.org/10.1016/j.dendro.2020.125746.
