@@ -245,8 +245,10 @@ bsgc<-function(rwl,p.thresh=0.05,make.plot=T,maxlag=20,rm.succ=TRUE,w1=0.93,w2=0
   if(SHAP$p.val<0.05){warning("shapiro-test p.value of growth changes < 0.05. Derived parameters are not reliable!")}
   PGSGC.MAT<-matrix(nrow=nrow(rwl)-1,ncol=maxlag)
   rownames(PGSGC.MAT)<-rownames(rwl)[2:nrow(rwl)]
+  colnames(PGSGC.MAT)<-paste("lag",0:(ncol(COMB.P)-1))
   PSGC.MAT<-matrix(nrow=nrow(rwl)-1,ncol=maxlag)
   rownames(PSGC.MAT)<-rownames(rwl)[2:nrow(rwl)]
+  colnames(PSGC.MAT)<-paste("lag",0:(ncol(COMB.P)-1))
   for(i in 1:maxlag)
   {
     GC.I<-apply(rwl,2,diff,lag=i)
