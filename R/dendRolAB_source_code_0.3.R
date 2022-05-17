@@ -263,7 +263,7 @@ bsgc<-function(rwl,p.thresh=0.05,make.plot=T,maxlag=20,rm.succ=TRUE,w1=0.93,w2=0
   }
   COMB.P<-.conflate(PGSGC.MAT,PSGC.MAT,w1,w2)
   rownames(COMB.P)<-rownames(rwl)[2:nrow(rwl)]
-  colnames(COMB.P)<-paste("lag",1:ncol(COMB.P))
+  colnames(COMB.P)<-paste("lag",0:(ncol(COMB.P)-1))
   if(length(which(COMB.P[,1]<p.thresh/2))>0)
   {
     NEG<-COMB.P[which(COMB.P[,1]<p.thresh/2),1]	
