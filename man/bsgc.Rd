@@ -7,7 +7,7 @@ Compute the bias-adjusted standardized growth change method for pointer year ana
 bsgc represents a refined version of the sgc method (Buras et al., 2020). It now also allows for detecting pointer years following successive growth decline as well as an estimate for the duration of the growth relaxation period, i.e. the period until when growth values have reached expected rates.
 }
 \usage{
-bsgc(rwl, p.thresh=0.05, make.plot=T, maxlag=20, rm.succ=FALSE, w1=0.93, w2=0.53,...)
+bsgc(rwl, p.thresh=0.05, make.plot=T, maxlag=20, rm.succ=TRUE, w1=0.93, w2=0.53,...)
 }
 \arguments{
   \item{rwl}{
@@ -49,12 +49,13 @@ P.thresh must not be increased in order to conform with statistical rules and ke
 }
 \references{
 Buras, Rammig, and Zang (2020): A novel approach for the detection of pointer years. Dendrochronologia 63, 125746. https://doi.org/10.1016/j.dendro.2020.125746.
-Buras, Ovenden, Rammig, and Zang (2022): Refining the standardized growth change method: bias-adjustment and definition of the relaxation period. Dendrochronologia 65, 
+Buras, Ovenden, Rammig, and Zang (2022): Refining the standardized growth change method: bias-adjustment and definition of the relaxation period. Dendrochronologia 65, 125964. https://doi.org/10.1016/j.dendro.2022.125964
 }
 \author{
 Allan Buras
 }
 \note{
-A video tutorial exemplifying the application of bsgc is provided on dendroschool.org
+bsgc replaces the former function sgc, which is outdated.
+A video tutorial exemplifying the application of bsgc is provided at https://dendroschool.org/bias-adjusted-standardized-growth-change-method-bsgc/
 }
 

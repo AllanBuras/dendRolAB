@@ -231,7 +231,7 @@ plot_btfs<-function(x,...)
 
 
 
-bsgc<-function(rwl,p.thresh=0.05,make.plot=T,maxlag=20,rm.succ=FALSE,w1=0.93,w2=0.53,...)###bias-corrected standardized growth change
+bsgc<-function(rwl,p.thresh=0.05,make.plot=T,maxlag=20,rm.succ=TRUE,w1=0.93,w2=0.53,...)###bias-corrected standardized growth change
 {
   if(length(which(is.na(rwl)))!=0)
     {
