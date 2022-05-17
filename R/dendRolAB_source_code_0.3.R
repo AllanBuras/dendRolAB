@@ -238,6 +238,7 @@ bsgc<-function(rwl,p.thresh=0.05,make.plot=T,maxlag=20,rm.succ=TRUE,w1=0.93,w2=0
     stop("rwl must not contain NAs. Only apply BSGC to common overlap period!")
     }
   if(maxlag>nrow(rwl)/2){maxlag<-nrow(rwl)/2;warning("maximum lag was set to half the number of observations!")}
+  maxlag<-maxlag+1
   CHRON<-apply(rwl,1,mean)
   GC<-apply(rwl,2,diff)
   M.GC<-apply(GC,1,mean)
