@@ -141,7 +141,7 @@ btfs<-function(x,y,boot.n=1000)
 		COMP_MAT[i,5]<-ITER[1,4]
 		COMP_MAT[i,6]<-ITER[2,4]
 		BOOT_MAT[i,1]<-max(ITER[,1])
-		BOOT_MAT[i,2]<-(ITER[1,2]/ITER[2,2])
+		BOOT_MAT[i,2]<-(ITER[1,2]-ITER[2,2])
 		BOOT_MAT[i,3]<-(ITER[1,3]/ITER[2,3])
 		BOOT_MAT[i,4]<-(ITER[1,4]/ITER[2,4])
 		BOOT_MAT[i,5]<-min(ITER[,5])
@@ -155,8 +155,8 @@ btfs<-function(x,y,boot.n=1000)
 	ECDF4<-ecdf(BOOT_MAT[,4])
 	ECDF5<-ecdf(BOOT_MAT[,5])
 	ECDF6<-ecdf(BOOT_MAT[,6])
-	if(MEANS[2]>=1){STATS[2]<-2*ECDF2(1)}
-	if(MEANS[2]<1){STATS[2]<-2*(1-ECDF2(1))}
+	if(MEANS[2]>=0){STATS[2]<-2*ECDF2(0)}
+	if(MEANS[2]<0){STATS[2]<-2*(1-ECDF2(0))}
 	if(MEANS[3]>=1){STATS[3]<-2*ECDF3(1)}
 	if(MEANS[3]<1){STATS[3]<-2*(1-ECDF3(1))}
 	if(MEANS[4]>=1){STATS[4]<-2*ECDF4(1)}
@@ -166,7 +166,7 @@ btfs<-function(x,y,boot.n=1000)
 	MEANS<-round(MEANS,digits=2)
 	STATS<-round(STATS,digits=3)
 	OUT<-rbind(MEANS[2:6],STATS[2:6])
-	colnames(OUT)<-c("intercept-ratio","slope-ratio","rsq-ratio","RE","CE")
+	colnames(OUT)<-c("intercept-delta","slope-ratio","rsq-ratio","RE","CE")
 	rownames(OUT)<-c("bootstrapped estimate","p-value")
 	if(MEANS[1]>0.05){print(paste("Warning: period-specific regressions are in ",(1-STATS[1])*100,"% of cases insignificant",sep=""))}
 	list(stats=OUT,boot.mat=COMP_MAT)
@@ -185,8 +185,8 @@ plot_btfs<-function(x,...)
 		if(x$stats[2,i]<0.01){SIGN<-"**"}
 		if(x$stats[2,i]<0.001){SIGN<-"***"}
 		text(x=1.5,y=seq(min(VEC),max(VEC),diff(range(VEC))/100)[95],SIGN,cex=3)
-		}
-	par(mfrow=c(1,1))
+	}
+  par(mfrow=c(1,1))
 	}
 
 
