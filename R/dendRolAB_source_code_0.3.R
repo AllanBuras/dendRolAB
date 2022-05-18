@@ -186,6 +186,7 @@ plot_btfs<-function(x,...)
 		if(x$stats[2,i]<0.001){SIGN<-"***"}
 		text(x=1.5,y=seq(min(VEC),max(VEC),diff(range(VEC))/100)[95],SIGN,cex=3)
 		}
+	par(mfrow=c(1,1))
 	}
 
 
